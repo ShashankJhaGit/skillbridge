@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SAT Practice - SkillBridge</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">SkillBridge</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tutor.html">AI Tutor</a></li>
+                <li><a href="sat.html" class="active">SAT Practice</a></li>
+                <li><a href="act.html">ACT Practice</a></li>
+                <li><a href="applications.html">College Apps</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+            <button class="mobile-menu" aria-label="Open navigation menu" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+    <main>
+        <section id="sat-practice" class="section active">
+            <div class="container">
+                <h2>SAT Practice</h2>
+                <div class="practice-area">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Question 1</span>
+                            <span>Math - Calculator</span>
+                        </div>
+                        <p><strong>If 3x + 2 = 17, what is the value of 6x + 4?</strong></p>
+                        <div class="options">
+                            <div class="option" onclick="selectOption(this, false)">A) 28</div>
+                            <div class="option" onclick="selectOption(this, false)">B) 30</div>
+                            <div class="option" onclick="selectOption(this, true)">C) 34</div>
+                            <div class="option" onclick="selectOption(this, false)">D) 36</div>
+                        </div>
+                        <div class="explanation" id="explanation-1">
+                            <h4>Explanation:</h4>
+                            <p><strong>Correct Answer: C) 34</strong></p>
+                            <p>First, solve for x: 3x + 2 = 17, so 3x = 15, therefore x = 5.</p>
+                            <p>Now substitute x = 5 into 6x + 4: 6(5) + 4 = 30 + 4 = 34.</p>
+                            <p><strong>Strategy tip:</strong> Notice that 6x + 4 = 2(3x + 2). Since 3x + 2 = 17, we get 2(17) = 34 directly!</p>
+                        </div>
+                    </div>
+                    <div class="controls">
+                        <button class="btn" onclick="showExplanation('explanation-1')">Show Explanation</button>
+                        <button class="btn primary" onclick="nextQuestion()">Next Question</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleMobileMenu() {
+            document.querySelector('.nav').classList.toggle('open');
+        }
+        function selectOption(element, isCorrect) {
+            const options = element.parentNode.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            element.parentNode.dataset.correct = isCorrect;
+        }
+        function showExplanation(explanationId) {
+            const explanation = document.getElementById(explanationId);
+            explanation.classList.add('show');
+        }
+        function nextQuestion() {
+            alert('Next question would load here! This is a demo with sample questions.');
+        }
+    </script>
+</body>
+</html>
