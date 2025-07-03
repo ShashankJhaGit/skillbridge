@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,3 +149,155 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>College Applications - SkillBridge</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">SkillBridge</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tutor.html">AI Tutor</a></li>
+                <li><a href="sat.html">SAT Practice</a></li>
+                <li><a href="act.html">ACT Practice</a></li>
+                <li><a href="applications.html" class="active">College Apps</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+            <button class="mobile-menu" aria-label="Open navigation menu" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+    <main>
+        <section id="college-apps" class="section active">
+            <div class="container">
+                <h2>College Application Essays</h2>
+                <div class="practice-area">
+                    <div class="essay-prompt">
+                        <div style="margin-bottom: 0.5em;">
+                            <label for="college-select" style="font-weight: bold;">Type or scroll to select your college:</label><br>
+                            <input list="college-list" id="college-select" name="college-select" placeholder="Start typing college name..." style="width: 100%; max-width: 400px; padding: 0.5em; border: 1px solid #2563eb; border-radius: 6px; margin-top: 0.25em;" oninput="onCollegeChange()" onchange="onCollegeChange()" autocomplete="off">
+                            <datalist id="college-list">
+                                <option value="Massachusetts Institute of Technology (MIT)"></option>
+                                <option value="Harvard University"></option>
+                                <option value="Stanford University"></option>
+                                <option value="Yale University"></option>
+                                <option value="Princeton University"></option>
+                                <!-- Add more as needed -->
+                            </datalist>
+                        </div>
+                        <h3 id="college-prompt-heading">Practice Prompt (Select a college style)</h3>
+                        <p id="college-prompt-text"><strong>Select a college to see a prompt.</strong></p>
+                    </div>
+                    <textarea class="essay-textarea" id="essay-text" placeholder="Start writing your essay here..."></textarea>
+                    <div class="word-count">Word count: <span id="word-count">0</span>/800 <span style="color:#e11d48">*</span></div>
+                    <div style="font-size:0.95em;color:#6b7280;margin-bottom:0.5em"><span style="color:#e11d48">*</span> For best results, we recommend not going past 800 words. Many colleges may not accept longer essays.</div>
+                    <div class="controls">
+                        <button class="btn primary" onclick="getEssayFeedback()">Get AI Feedback</button>
+                        <button class="btn" onclick="newPrompt()">New Prompt</button>
+                    </div>
+                    <div class="feedback" id="essay-feedback" style="display: none;">
+                        <div class="score">
+                            <div class="score-circle">8.5</div>
+                            <p><strong>Strong Essay</strong> - Admissions Competitive</p>
+                        </div>
+                        <h4>Feedback Summary:</h4>
+                        <p><strong>Strengths:</strong> Great personal voice and specific examples. You effectively connect your background to your aspirations.</p>
+                        <p><strong>Areas to improve:</strong> Consider adding more reflection on how this experience will influence your future contributions to MIT's community.</p>
+                        <p><strong>Suggestion:</strong> The transition between your community description and career goals could be smoother. Try connecting them with a bridging sentence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleMobileMenu() {
+            document.querySelector('.nav').classList.toggle('open');
+        }
+        // College prompts data and logic (simplified for brevity)
+        const collegePrompts = {
+            "Massachusetts Institute of Technology (MIT)": [
+                "Describe the world you come from — for example, your family, school, community, city, or town. How has that world shaped your dreams and aspirations?",
+                "Tell us about something you do simply for the pleasure of it.",
+                "We know you lead a busy life, full of activities, many of which are required of you. Tell us about something you do for the pleasure of it.",
+                "Describe a time when you used creativity to solve a problem.",
+                "What field of study at MIT excites you most and why?"
+            ],
+            "Harvard University": [
+                "Please briefly elaborate on one of your extracurricular activities or work experiences.",
+                "How do you hope to use your Harvard education in the future?",
+                "Harvard has long recognized the importance of student body diversity. How will your experiences contribute to our community?",
+                "Reflect on a time when you questioned or challenged a belief or idea. What prompted your thinking? What was the outcome?",
+                "What would you do to contribute to the Harvard community?"
+            ]
+        };
+        let currentCollege = '';
+        let currentPromptIndex = 0;
+        function onCollegeChange() {
+            const input = document.getElementById('college-select');
+            let college = input.value.trim();
+            if (!college || !collegePrompts[college]) {
+                document.getElementById('college-prompt-heading').textContent = 'Practice Prompt (Select a college style)';
+                document.getElementById('college-prompt-text').innerHTML = '<strong>Select a college to see a prompt.</strong>';
+                currentCollege = '';
+                currentPromptIndex = 0;
+                return;
+            }
+            currentCollege = college;
+            currentPromptIndex = 0;
+            document.getElementById('college-prompt-heading').textContent = `Prompt 1/5 (${college} style)`;
+            document.getElementById('college-prompt-text').innerHTML = `<strong>${collegePrompts[college][0]}</strong>`;
+        }
+        function getEssayFeedback() {
+            const essayText = document.getElementById('essay-text').value;
+            if (essayText.trim() === '') {
+                alert('Please write some content first!');
+                return;
+            }
+            document.getElementById('essay-feedback').style.display = 'block';
+            document.getElementById('essay-feedback').scrollIntoView({ behavior: 'smooth' });
+        }
+        function newPrompt() {
+            const input = document.getElementById('college-select');
+            const heading = document.getElementById('college-prompt-heading');
+            const promptText = document.getElementById('college-prompt-text');
+            let college = input.value.trim();
+            if (!college || !collegePrompts[college]) {
+                heading.textContent = 'Practice Prompt (Select a college style)';
+                promptText.innerHTML = '<strong>Select a college to see a prompt.</strong>';
+                currentCollege = '';
+                currentPromptIndex = 0;
+                return;
+            }
+            currentPromptIndex = (currentPromptIndex + 1) % 5;
+            heading.textContent = `Prompt ${currentPromptIndex + 1}/5 (${college} style)`;
+            promptText.innerHTML = `<strong>${collegePrompts[college][currentPromptIndex]}</strong>`;
+            document.getElementById('essay-text').value = '';
+            document.getElementById('word-count').textContent = '0';
+            document.getElementById('essay-feedback').style.display = 'none';
+        }
+        (function() {
+            const essayText = document.getElementById('essay-text');
+            const wordCount = document.getElementById('word-count');
+            const MAX_CHARS = 800;
+            if (essayText && !essayText.dataset.listenerAdded) {
+                essayText.addEventListener('input', function() {
+                    if (this.value.length > MAX_CHARS) {
+                        this.value = this.value.slice(0, MAX_CHARS);
+                    }
+                    wordCount.textContent = this.value.length;
+                });
+                essayText.dataset.listenerAdded = 'true';
+            }
+        })();
+    </script>
+</body>
+</html>
+>>>>>>> 9bbc9d8ad27eff30be1bcedcd26ff5c837dff280

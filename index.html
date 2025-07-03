@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -645,3 +646,652 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SkillBridge - Your AI-Powered Study Companion</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">SkillBridge</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="tutor.html">AI Tutor</a></li>
+                <li><a href="sat.html">SAT Practice</a></li>
+                <li><a href="act.html">ACT Practice</a></li>
+                <li><a href="applications.html">College Apps</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+            <button class="mobile-menu" aria-label="Open navigation menu" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="container">
+                    <h1>Master Your Studies with AI</h1>
+                    <p>Get personalized tutoring, practice for SAT/ACT, and ace your college applications with our AI-powered platform designed specifically for high school students.</p>
+                    <a href="#" onclick="showSection('ai-tutor')" class="cta-button">Start Learning Now</a>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="container">
+                    <h2>Everything You Need to Succeed</h2>
+                    <div class="features-grid">
+                        <div class="feature-card" onclick="showSection('ai-tutor')">
+                            <div class="feature-icon">🤖</div>
+                            <h3>AI Tutoring</h3>
+                            <p>Get instant help with any subject. Our AI breaks down complex concepts and provides step-by-step explanations tailored to your learning style.</p>
+                        </div>
+                        <div class="feature-card" onclick="showSection('sat-practice')">
+                            <div class="feature-icon">📊</div>
+                            <h3>SAT Practice</h3>
+                            <p>Practice with realistic SAT questions and get detailed explanations for every answer. Track your progress and identify areas for improvement.</p>
+                        </div>
+                        <div class="feature-card" onclick="showSection('act-practice')">
+                            <div class="feature-icon">📈</div>
+                            <h3>ACT Practice</h3>
+                            <p>Prepare for the ACT with adaptive practice questions that adjust to your skill level. Master each section with personalized feedback.</p>
+                        </div>
+                        <div class="feature-card" onclick="showSection('college-apps')">
+                            <div class="feature-icon">🎓</div>
+                            <h3>College Applications</h3>
+                            <p>Write compelling essays with AI feedback that mimics top college admissions standards. Get tips to make your application stand out.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Tutor Section -->
+        <section id="ai-tutor" class="section">
+            <div class="container">
+                <h2>AI Tutor - Ask Anything!</h2>
+                <div class="chat-interface">
+                    <div class="chat-header">
+                        SkillBridge Tutor - Ready to Help!
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message ai-message">
+                            <strong>SkillBridge:</strong> Hi! I'm your personal AI tutor. Ask me about any subject - math, science, history, literature, or anything else you're studying. I'll break it down step by step!
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-input" placeholder="Ask me anything... (e.g., 'Explain photosynthesis' or 'Help with quadratic equations')" />
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SAT Practice Section -->
+        <section id="sat-practice" class="section">
+            <div class="container">
+                <h2>SAT Practice</h2>
+                <div class="practice-area">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Question 1</span>
+                            <span>Math - Calculator</span>
+                        </div>
+                        <p><strong>If 3x + 2 = 17, what is the value of 6x + 4?</strong></p>
+                        <div class="options">
+                            <div class="option" onclick="selectOption(this, false)">A) 28</div>
+                            <div class="option" onclick="selectOption(this, false)">B) 30</div>
+                            <div class="option" onclick="selectOption(this, true)">C) 34</div>
+                            <div class="option" onclick="selectOption(this, false)">D) 36</div>
+                        </div>
+                        <div class="explanation" id="explanation-1">
+                            <h4>Explanation:</h4>
+                            <p><strong>Correct Answer: C) 34</strong></p>
+                            <p>First, solve for x: 3x + 2 = 17, so 3x = 15, therefore x = 5.</p>
+                            <p>Now substitute x = 5 into 6x + 4: 6(5) + 4 = 30 + 4 = 34.</p>
+                            <p><strong>Strategy tip:</strong> Notice that 6x + 4 = 2(3x + 2). Since 3x + 2 = 17, we get 2(17) = 34 directly!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="btn" onclick="showExplanation('explanation-1')">Show Explanation</button>
+                        <button class="btn primary" onclick="nextQuestion()">Next Question</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACT Practice Section -->
+        <section id="act-practice" class="section">
+            <div class="container">
+                <h2>ACT Practice</h2>
+                <div class="practice-area">
+                    <div class="question-card">
+                        <div class="question-header">
+                            <span class="question-number">Question 1</span>
+                            <span>English - Usage/Mechanics</span>
+                        </div>
+                        <p><strong>Choose the best revision for the underlined portion:</strong></p>
+                        <p>The students were excited about <u>there</u> upcoming field trip to the science museum.</p>
+                        <div class="options">
+                            <div class="option" onclick="selectOption(this, false)">A) NO CHANGE</div>
+                            <div class="option" onclick="selectOption(this, true)">B) their</div>
+                            <div class="option" onclick="selectOption(this, false)">C) they're</div>
+                            <div class="option" onclick="selectOption(this, false)">D) theyre</div>
+                        </div>
+                        <div class="explanation" id="act-explanation-1">
+                            <h4>Explanation:</h4>
+                            <p><strong>Correct Answer: B) their</strong></p>
+                            <p><strong>Their</strong> is the possessive form, showing ownership (the students' field trip).</p>
+                            <p><strong>There</strong> refers to a location ("over there").</p>
+                            <p><strong>They're</strong> is a contraction for "they are".</p>
+                            <p><strong>Memory tip:</strong> "Their" shows ownership, just like "heir" inherits something!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="controls">
+                        <button class="btn" onclick="showExplanation('act-explanation-1')">Show Explanation</button>
+                        <button class="btn primary" onclick="nextACTQuestion()">Next Question</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- College Applications Section -->
+        <section id="college-apps" class="section">
+            <div class="container">
+                <h2>College Application Essays</h2>
+                <div class="practice-area">
+                    <div class="essay-prompt">
+                        <div style="margin-bottom: 0.5em;">
+                            <label for="college-select" style="font-weight: bold;">Type or scroll to select your college:</label><br>
+                            <input list="college-list" id="college-select" name="college-select" placeholder="Start typing college name..." style="width: 100%; max-width: 400px; padding: 0.5em; border: 1px solid #2563eb; border-radius: 6px; margin-top: 0.25em;" oninput="onCollegeChange()" onchange="onCollegeChange()" autocomplete="off">
+                            <datalist id="college-list" onclick="onCollegeChange()">
+                                <option value="Massachusetts Institute of Technology (MIT)"></option>
+                                <option value="Harvard University"></option>
+                                <option value="Stanford University"></option>
+                                <option value="Yale University"></option>
+                                <option value="Princeton University"></option>
+                                <option value="California Institute of Technology (Caltech)"></option>
+                                <option value="University of Chicago"></option>
+                                <option value="Columbia University"></option>
+                                <option value="University of Pennsylvania"></option>
+                                <option value="Duke University"></option>
+                                <option value="Johns Hopkins University"></option>
+                                <option value="Northwestern University"></option>
+                                <option value="Dartmouth College"></option>
+                                <option value="Brown University"></option>
+                                <option value="Cornell University"></option>
+                                <option value="University of California, Berkeley"></option>
+                                <option value="University of California, Los Angeles (UCLA)"></option>
+                                <option value="University of Michigan"></option>
+                                <option value="University of Virginia"></option>
+                                <option value="University of North Carolina at Chapel Hill"></option>
+                                <option value="University of Southern California"></option>
+                                <option value="New York University"></option>
+                                <option value="Vanderbilt University"></option>
+                                <option value="Rice University"></option>
+                                <option value="Emory University"></option>
+                                <option value="Georgetown University"></option>
+                                <option value="Carnegie Mellon University"></option>
+                                <option value="University of Notre Dame"></option>
+                                <option value="Washington University in St. Louis"></option>
+                                <option value="Tufts University"></option>
+                                <option value="Wake Forest University"></option>
+                                <option value="Boston College"></option>
+                                <option value="University of Rochester"></option>
+                                <option value="Georgia Institute of Technology"></option>
+                                <option value="Brandeis University"></option>
+                                <option value="Case Western Reserve University"></option>
+                                <option value="College of William & Mary"></option>
+                                <option value="Northeastern University"></option>
+                                <option value="University of Florida"></option>
+                                <option value="University of Miami"></option>
+                                <option value="Boston University"></option>
+                                <option value="Tulane University"></option>
+                                <option value="University of Wisconsin-Madison"></option>
+                                <option value="University of Illinois Urbana-Champaign"></option>
+                                <option value="Pennsylvania State University"></option>
+                                <option value="Purdue University"></option>
+                                <option value="Ohio State University"></option>
+                                <option value="University of Texas at Austin"></option>
+                                <option value="University of Washington"></option>
+                                <option value="University of Maryland"></option>
+                                <option value="University of Georgia"></option>
+                                <option value="University of Minnesota"></option>
+                                <option value="University of Arizona"></option>
+                                <option value="University of Colorado Boulder"></option>
+                                <option value="University of Iowa"></option>
+                                <option value="University of Kansas"></option>
+                                <option value="University of Kentucky"></option>
+                                <option value="University of Missouri"></option>
+                                <option value="University of Nebraska-Lincoln"></option>
+                                <option value="University of Oklahoma"></option>
+                                <option value="University of Oregon"></option>
+                                <option value="University of Pittsburgh"></option>
+                                <option value="University of South Carolina"></option>
+                                <option value="University of Tennessee"></option>
+                                <option value="University of Utah"></option>
+                                <option value="University of Alabama"></option>
+                                <option value="University of Arkansas"></option>
+                                <option value="University of Connecticut"></option>
+                                <option value="University of Delaware"></option>
+                                <option value="University of Idaho"></option>
+                                <option value="University of Louisville"></option>
+                                <option value="University of Mississippi"></option>
+                                <option value="University of Montana"></option>
+                                <option value="University of Nevada, Reno"></option>
+                                <option value="University of New Hampshire"></option>
+                                <option value="University of New Mexico"></option>
+                                <option value="University of North Dakota"></option>
+                                <option value="University of Rhode Island"></option>
+                                <option value="University of Vermont"></option>
+                                <option value="University of Wyoming"></option>
+                                <option value="Auburn University"></option>
+                                <option value="Baylor University"></option>
+                                <option value="Clemson University"></option>
+                                <option value="Colorado State University"></option>
+                                <option value="Florida State University"></option>
+                                <option value="George Washington University"></option>
+                                <option value="Indiana University Bloomington"></option>
+                                <option value="Iowa State University"></option>
+                                <option value="Kansas State University"></option>
+                                <option value="Louisiana State University"></option>
+                                <option value="Michigan State University"></option>
+                                <option value="Mississippi State University"></option>
+                                <option value="Montana State University"></option>
+                                <option value="North Carolina State University"></option>
+                                <option value="Oklahoma State University"></option>
+                                <option value="Oregon State University"></option>
+                                <option value="Rutgers University"></option>
+                                <option value="San Diego State University"></option>
+                                <option value="San Jose State University"></option>
+                                <option value="Temple University"></option>
+                                <option value="Texas A&M University"></option>
+                                <option value="Texas Tech University"></option>
+                                <option value="University at Buffalo"></option>
+                                <option value="University of Central Florida"></option>
+                                <option value="University of Cincinnati"></option>
+                                <option value="University of Houston"></option>
+                                <option value="University of Massachusetts Amherst"></option>
+                                <option value="University of Memphis"></option>
+                                <option value="University of Nevada, Las Vegas"></option>
+                                <option value="University of North Texas"></option>
+                                <option value="University of South Florida"></option>
+                                <option value="University of Texas at Dallas"></option>
+                                <option value="Virginia Tech"></option>
+                                <option value="West Virginia University"></option>
+                                <option value="Western Michigan University"></option>
+                                <option value="Wichita State University"></option>
+                                <option value="William Paterson University"></option>
+                                <!-- Add more as needed -->
+                            </datalist>
+                        </div>
+                        <h3 id="college-prompt-heading">Practice Prompt (Select a college style)</h3>
+                        <p id="college-prompt-text"><strong>Select a college to see a prompt.</strong></p>
+                    </div>
+                    <textarea class="essay-textarea" id="essay-text" placeholder="Start writing your essay here..."></textarea>
+                    <div class="word-count">Word count: <span id="word-count">0</span>/800 <span style="color:#e11d48">*</span></div>
+                    <div style="font-size:0.95em;color:#6b7280;margin-bottom:0.5em"><span style="color:#e11d48">*</span> For best results, we recommend not going past 800 words. Many colleges may not accept longer essays.</div>
+                    <div class="controls">
+                        <button class="btn primary" onclick="getEssayFeedback()">Get AI Feedback</button>
+                        <button class="btn" onclick="newPrompt()">New Prompt</button>
+                    </div>
+                    <div class="feedback" id="essay-feedback" style="display: none;">
+                        <div class="score">
+                            <div class="score-circle">8.5</div>
+                            <p><strong>Strong Essay</strong> - Admissions Competitive</p>
+                        </div>
+                        <h4>Feedback Summary:</h4>
+                        <p><strong>Strengths:</strong> Great personal voice and specific examples. You effectively connect your background to your aspirations.</p>
+                        <p><strong>Areas to improve:</strong> Consider adding more reflection on how this experience will influence your future contributions to MIT's community.</p>
+                        <p><strong>Suggestion:</strong> The transition between your community description and career goals could be smoother. Try connecting them with a bridging sentence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About/Creator Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2>Meet the Creator</h2>
+                <div class="about-section">
+                    <div class="creator-card">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiByeD0iMTAwIiBmaWxsPSIjMjU2M2ViIi8+Cjx0ZXh0IHg9IjEwMCIgeT0iMTEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjQ4IiBmb250LXdlaWdodD0iYm9sZCI+U0o8L3RleHQ+Cjwvc3ZnPg==" alt="Shashank Jha" class="creator-image" id="creator-photo" />
+                        <h3 class="creator-name">Shashank Jha</h3>
+                        <p class="creator-title">Class of 2029 • Founder & Developer</p>
+                        <p class="creator-bio">
+                            Shashank Jha is a passionate student with a graduating class of 2029 who has been coding since the age of 9 and began his cybersecurity journey at 14. Driven by a desire to help fellow students excel academically, he created SkillBridge to provide personalized, AI-powered learning tools that make high school success more achievable for everyone. His vision is to democratize access to high-quality educational support, combining his technical expertise with a deep understanding of student needs.
+                        </p>
+                        
+                        <div class="achievements">
+                            <div class="achievement">
+                                <span class="achievement-number">5+</span>
+                                <span class="achievement-text">Years of Programming Experience</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-number">CompTIA</span>
+                                <span class="achievement-text">Security+ Certified</span>
+                            </div>
+                            <div class="achievement">
+                                <span class="achievement-number">2029</span>
+                                <span class="achievement-text">High School Graduation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showSection(event, sectionId) {
+        // Update the college prompt heading when a college is selected/typed
+        // College prompts data: 5 prompts per college
+        const collegePrompts = {
+            "Massachusetts Institute of Technology (MIT)": [
+                "Describe the world you come from — for example, your family, school, community, city, or town. How has that world shaped your dreams and aspirations?",
+                "Tell us about something you do simply for the pleasure of it.",
+                "We know you lead a busy life, full of activities, many of which are required of you. Tell us about something you do for the pleasure of it.",
+                "Describe a time when you used creativity to solve a problem.",
+                "What field of study at MIT excites you most and why?"
+            ],
+            "Harvard University": [
+                "Please briefly elaborate on one of your extracurricular activities or work experiences.",
+                "How do you hope to use your Harvard education in the future?",
+                "Harvard has long recognized the importance of student body diversity. How will your experiences contribute to our community?",
+                "Reflect on a time when you questioned or challenged a belief or idea. What prompted your thinking? What was the outcome?",
+                "What would you do to contribute to the Harvard community?"
+            ],
+            "Stanford University": [
+                "What matters to you, and why?",
+                "Stanford students possess an intellectual vitality. Reflect on an idea or experience that makes you genuinely excited about learning.",
+                "Virtually all of Stanford's undergraduates live on campus. Write a note to your future roommate.",
+                "Tell us about something that is meaningful to you and why.",
+                "How did you spend your last two summers?"
+            ],
+            "Yale University": [
+                "Yale’s residential colleges regularly host conversations with guests representing a wide range of experiences and accomplishments. What person, past or present, would you invite to speak? What question would you ask?",
+                "Reflect on your engagement with a community to which you belong. How do you feel you have contributed to this community?",
+                "Describe a topic, idea, or concept you find so engaging that it makes you lose all track of time.",
+                "What inspires you?",
+                "Why Yale?"
+            ],
+            "Princeton University": [
+                "Briefly elaborate on an activity, organization, work experience, or hobby that has been particularly meaningful to you.",
+                "At Princeton, we value diverse perspectives and the ability to have respectful dialogue about difficult issues. Share a time when you had a conversation with a person or a group of people about a difficult topic. What did you learn from the experience?",
+                "What is a new skill you would like to learn in college?",
+                "Tell us about a person who has influenced you in a significant way.",
+                "Princeton students are known for their service and leadership. How do you plan to contribute to the Princeton community?"
+            ],
+            "California Institute of Technology (Caltech)": [
+                "Describe three experiences and/or activities that have helped develop your passion for a possible career in a STEM field.",
+                "Caltech students are often known for their sense of humor and creative pranks. Tell us about a time you used humor or creativity to solve a problem.",
+                "The process of discovery best advances when people from various backgrounds, experiences, and perspectives come together. How do you see yourself contributing to the diversity of Caltech’s community?",
+                "Describe an intellectual challenge you have faced and how you overcame it.",
+                "If you had unlimited resources, what scientific or mathematical problem would you investigate and why?"
+            ],
+            "University of Chicago": [
+                "How does the University of Chicago, as you know it now, satisfy your desire for a particular kind of learning, community, and future?",
+                "Share with us a few of your favorite books, poems, authors, films, plays, pieces of music, musicians, performers, paintings, artists, blogs, magazines, or newspapers. Feel free to touch on one, some, or all of the categories listed.",
+                "UChicago’s uncommon application essay: Find x.",
+                "Describe your favorite intellectual experience and how it has shaped you.",
+                "What can actually be divided by zero?"
+            ],
+            "Columbia University": [
+                "List the titles of the required readings from courses during the school year or summer that you enjoyed most in the past year.",
+                "Why are you interested in attending Columbia University?",
+                "For applicants to Columbia College, please tell us what from your current and past experiences (either academic or personal) attracts you specifically to the field or fields of study that you noted in the application.",
+                "Columbia students take an active role in improving their community. Describe one experience where you made a difference.",
+                "If you could meet any historical figure, who would it be and why?"
+            ],
+            "University of Pennsylvania": [
+                "How will you explore your intellectual and academic interests at the University of Pennsylvania?",
+                "At Penn, learning and growth happen outside of the classroom, too. How will you make the most of the community at Penn?",
+                "Describe a time when you overcame a challenge or setback.",
+                "Why are you interested in the program you have applied to at Penn?",
+                "What do you hope to accomplish at Penn?"
+            ],
+            "Duke University": [
+                "Duke University seeks a talented, engaged student body that embodies the wide range of human experience. Please discuss why you consider Duke a good match for you.",
+                "Duke values diversity and inclusion. Share an experience where you contributed to or learned from a diverse community.",
+                "Describe a time when you took a risk and what you learned from it.",
+                "What excites you about the academic opportunities at Duke?",
+                "If you could design your own course at Duke, what would it be and why?"
+            ],
+            // ...repeat for all other colleges in the dropdown, each with 5 unique prompts...
+        };
+
+        // Track current prompt index for each college
+        let currentCollege = '';
+        let currentPromptIndex = 0;
+
+        function onCollegeChange() {
+            const input = document.getElementById('college-select');
+            let college = input.value.trim();
+            if (!college || !collegePrompts[college]) {
+                document.getElementById('college-prompt-heading').textContent = 'Practice Prompt (Select a college style)';
+                document.getElementById('college-prompt-text').innerHTML = '<strong>Select a college to see a prompt.</strong>';
+                currentCollege = '';
+                currentPromptIndex = 0;
+                return;
+            }
+            currentCollege = college;
+            currentPromptIndex = 0;
+            document.getElementById('college-prompt-heading').textContent = `Prompt 1/5 (${college} style)`;
+            document.getElementById('college-prompt-text').innerHTML = `<strong>${collegePrompts[college][0]}</strong>`;
+        }
+
+        function updateCollegePrompt() {
+            const input = document.getElementById('college-select');
+            const heading = document.getElementById('college-prompt-heading');
+            const promptText = document.getElementById('college-prompt-text');
+            let college = input.value.trim();
+            if (!college || !collegePrompts[college]) {
+                heading.textContent = 'Practice Prompt (Select a college style)';
+                promptText.innerHTML = '<strong>Select a college to see a prompt.</strong>';
+                currentCollege = '';
+                currentPromptIndex = 0;
+                return;
+            }
+            heading.textContent = `Prompt ${currentPromptIndex + 1}/5 (${college} style)`;
+            promptText.innerHTML = `<strong>${collegePrompts[college][currentPromptIndex]}</strong>`;
+        }
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            // Update nav
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => link.classList.remove('active'));
+            if (event && event.target) {
+                event.preventDefault();
+                event.target.classList.add('active');
+            }
+            // Close mobile menu if open
+            document.querySelector('.nav').classList.remove('open');
+        }
+
+        function toggleMobileMenu() {
+            document.querySelector('.nav').classList.toggle('open');
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            if (input.value.trim() === '') return;
+
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = `<strong>You:</strong> ${input.value}`;
+            messages.appendChild(userMessage);
+            messages.scrollTop = messages.scrollHeight;
+
+            // Show loading message
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'message ai-message';
+            loadingMessage.innerHTML = `<strong>SkillBridge:</strong> <em>Thinking...</em>`;
+            messages.appendChild(loadingMessage);
+            messages.scrollTop = messages.scrollHeight;
+
+            // Call Gemini API via your local proxy server (using 127.0.0.1)
+            const url = 'http://127.0.0.1:3000/api/gemini';
+            const prompt = input.value;
+            input.value = '';
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ prompt })
+                });
+                let data;
+                if (!response.ok) {
+                    // Proxy unreachable or error
+                    loadingMessage.innerHTML = `<strong>SkillBridge:</strong> <span style='color:red'>Proxy error: ${response.status} ${response.statusText}.<br>Is your proxy server running?</span>`;
+                } else {
+                    try {
+                        data = await response.json();
+                    } catch (jsonErr) {
+                        loadingMessage.innerHTML = `<strong>SkillBridge:</strong> <span style='color:red'>Error: Invalid response from server.</span>`;
+                        messages.scrollTop = messages.scrollHeight;
+                        input.focus();
+                        return;
+                    }
+                    let aiText = '';
+                    if (data && Array.isArray(data.candidates) && data.candidates.length > 0) {
+                        const candidate = data.candidates[0];
+                        if (candidate.content && Array.isArray(candidate.content.parts) && candidate.content.parts.length > 0) {
+                            const part = candidate.content.parts[0];
+                            if (typeof part === 'object' && part.text) {
+                                aiText = part.text;
+                            } else if (typeof part === 'string') {
+                                aiText = part;
+                            }
+                        }
+                    }
+                    if (!aiText) {
+                        if (data && data.error && data.error.message) {
+                            aiText = `<span style='color:red'>Gemini API Error: ${data.error.message}</span>`;
+                        } else {
+                            aiText = 'Sorry, I could not get a response from Gemini. Please check your proxy server and API key.';
+                        }
+                    }
+                    loadingMessage.innerHTML = `<strong>SkillBridge:</strong> ${aiText}`;
+                }
+            } catch (error) {
+                let msg = `<span style='color:red'>Error: ${error.message}</span>`;
+                if (error.message && error.message.includes('Failed to fetch')) {
+                    msg += '<br><span style="color:red">Is your Gemini proxy server running? Open PowerShell, run <code>node gemini-proxy.js</code>, and try again.</span>';
+                }
+                loadingMessage.innerHTML = `<strong>SkillBridge:</strong> ${msg}`;
+            }
+            messages.scrollTop = messages.scrollHeight;
+            input.focus();
+        }
+
+        // Send message on Enter key
+        (function() {
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput && !chatInput.dataset.listenerAdded) {
+                chatInput.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        sendMessage();
+                    }
+                });
+                chatInput.dataset.listenerAdded = 'true';
+            }
+        })();
+
+        // Gemini API is now used for AI responses. getAIResponse is no longer needed.
+
+        function selectOption(element, isCorrect) {
+            // Remove previous selections
+            const options = element.parentNode.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Select clicked option
+            element.classList.add('selected');
+            
+            // Store the answer for later
+            element.parentNode.dataset.correct = isCorrect;
+        }
+
+        function showExplanation(explanationId) {
+            const explanation = document.getElementById(explanationId);
+            explanation.classList.add('show');
+        }
+
+        function nextQuestion() {
+            alert('Next question would load here! This is a demo with sample questions.');
+        }
+
+        function nextACTQuestion() {
+            alert('Next ACT question would load here! This is a demo with sample questions.');
+        }
+
+        function getEssayFeedback() {
+            const essayText = document.getElementById('essay-text').value;
+            if (essayText.trim() === '') {
+                alert('Please write some content first!');
+                return;
+            }
+            
+            document.getElementById('essay-feedback').style.display = 'block';
+            document.getElementById('essay-feedback').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function newPrompt() {
+            const input = document.getElementById('college-select');
+            const heading = document.getElementById('college-prompt-heading');
+            const promptText = document.getElementById('college-prompt-text');
+            let college = input.value.trim();
+            if (!college || !collegePrompts[college]) {
+                heading.textContent = 'Practice Prompt (Select a college style)';
+                promptText.innerHTML = '<strong>Select a college to see a prompt.</strong>';
+                currentCollege = '';
+                currentPromptIndex = 0;
+                return;
+            }
+            // Cycle to next prompt (wrap around after 5)
+            currentPromptIndex = (currentPromptIndex + 1) % 5;
+            heading.textContent = `Prompt ${currentPromptIndex + 1}/5 (${college} style)`;
+            promptText.innerHTML = `<strong>${collegePrompts[college][currentPromptIndex]}</strong>`;
+            document.getElementById('essay-text').value = '';
+            document.getElementById('word-count').textContent = '0';
+            document.getElementById('essay-feedback').style.display = 'none';
+        }
+
+        // Character count and limit for essay textarea
+        (function() {
+            const essayText = document.getElementById('essay-text');
+            const wordCount = document.getElementById('word-count');
+            const MAX_CHARS = 800;
+            if (essayText && !essayText.dataset.listenerAdded) {
+                essayText.addEventListener('input', function() {
+                    if (this.value.length > MAX_CHARS) {
+                        this.value = this.value.slice(0, MAX_CHARS);
+                    }
+                    wordCount.textContent = this.value.length;
+                });
+                essayText.dataset.listenerAdded = 'true';
+            }
+        })();
+    </script>
+</body>
+</html>
+>>>>>>> 9bbc9d8ad27eff30be1bcedcd26ff5c837dff280

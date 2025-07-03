@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,3 +130,136 @@
     </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Tutor - SkillBridge</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">SkillBridge</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tutor.html" class="active">AI Tutor</a></li>
+                <li><a href="sat.html">SAT Practice</a></li>
+                <li><a href="act.html">ACT Practice</a></li>
+                <li><a href="applications.html">College Apps</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+            <button class="mobile-menu" aria-label="Open navigation menu" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
+    <main>
+        <section id="ai-tutor" class="section active">
+            <div class="container">
+                <h2>AI Tutor - Ask Anything!</h2>
+                <div class="chat-interface">
+                    <div class="chat-header">
+                        SkillBridge Tutor - Ready to Help!
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message ai-message">
+                            <strong>SkillBridge:</strong> Hi! I'm your personal AI tutor. Ask me about any subject - math, science, history, literature, or anything else you're studying. I'll break it down step by step!
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chat-input" placeholder="Ask me anything... (e.g., 'Explain photosynthesis' or 'Help with quadratic equations')" />
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function toggleMobileMenu() {
+            document.querySelector('.nav').classList.toggle('open');
+        }
+        async function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messages = document.getElementById('chat-messages');
+            if (input.value.trim() === '') return;
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user-message';
+            userMessage.innerHTML = `<strong>You:</strong> ${input.value}`;
+            messages.appendChild(userMessage);
+            messages.scrollTop = messages.scrollHeight;
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'message ai-message';
+            loadingMessage.innerHTML = `<strong>SkillBridge:</strong> <em>Thinking...</em>`;
+            messages.appendChild(loadingMessage);
+            messages.scrollTop = messages.scrollHeight;
+            const url = 'http://127.0.0.1:3000/api/gemini';
+            const prompt = input.value;
+            input.value = '';
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+                let data;
+                if (!response.ok) {
+                    loadingMessage.innerHTML = `<strong>SkillBridge:</strong> <span style='color:red'>Proxy error: ${response.status} ${response.statusText}.<br>Is your proxy server running?</span>`;
+                } else {
+                    try {
+                        data = await response.json();
+                    } catch (jsonErr) {
+                        loadingMessage.innerHTML = `<strong>SkillBridge:</strong> <span style='color:red'>Error: Invalid response from server.</span>`;
+                        messages.scrollTop = messages.scrollHeight;
+                        input.focus();
+                        return;
+                    }
+                    let aiText = '';
+                    if (data && Array.isArray(data.candidates) && data.candidates.length > 0) {
+                        const candidate = data.candidates[0];
+                        if (candidate.content && Array.isArray(candidate.content.parts) && candidate.content.parts.length > 0) {
+                            const part = candidate.content.parts[0];
+                            if (typeof part === 'object' && part.text) {
+                                aiText = part.text;
+                            } else if (typeof part === 'string') {
+                                aiText = part;
+                            }
+                        }
+                    }
+                    if (!aiText) {
+                        if (data && data.error && data.error.message) {
+                            aiText = `<span style='color:red'>Gemini API Error: ${data.error.message}</span>`;
+                        } else {
+                            aiText = 'Sorry, I could not get a response from Gemini. Please check your proxy server and API key.';
+                        }
+                    }
+                    loadingMessage.innerHTML = `<strong>SkillBridge:</strong> ${aiText}`;
+                }
+            } catch (error) {
+                let msg = `<span style='color:red'>Error: ${error.message}</span>`;
+                if (error.message && error.message.includes('Failed to fetch')) {
+                    msg += '<br><span style="color:red">Is your Gemini proxy server running? Open PowerShell, run <code>node gemini-proxy.js</code>, and try again.</span>';
+                }
+                loadingMessage.innerHTML = `<strong>SkillBridge:</strong> ${msg}`;
+            }
+            messages.scrollTop = messages.scrollHeight;
+            input.focus();
+        }
+        (function() {
+            const chatInput = document.getElementById('chat-input');
+            if (chatInput && !chatInput.dataset.listenerAdded) {
+                chatInput.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        sendMessage();
+                    }
+                });
+                chatInput.dataset.listenerAdded = 'true';
+            }
+        })();
+    </script>
+</body>
+</html>
+>>>>>>> 9bbc9d8ad27eff30be1bcedcd26ff5c837dff280
